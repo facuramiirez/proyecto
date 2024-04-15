@@ -22,7 +22,7 @@ class Mision {
 /*Mision especifica q sobreescribe las funciones de arriba con su comportamiento especifico*/
 class MisionPrincesa extends Mision {
     esDificil() {
-        return this.detalle === 4 || this.detalle === 5;
+        return this.solicitante.charAt(0) === 'G' && (this.detalle === 4 || this.detalle === 5);
     }
 
     puntos() {
@@ -34,7 +34,7 @@ class MisionPrincesa extends Mision {
 /*Mision especifica q sobreescribe las funciones de arriba con su comportamiento especifico*/
 class MisionObjeto extends Mision {
     esDificil() {
-        return this.detalle > 100;
+        return this.solicitante.charAt(0) === 'G' && this.detalle > 100;
     }
 
     puntos() {
