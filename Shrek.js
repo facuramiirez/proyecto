@@ -10,7 +10,7 @@ class Mision {
     }
 
     esDificil() {
-        return false;           
+        return this.solicitante.charAt(0) === 'G';           
     }                               
 
     puntos() {
@@ -18,11 +18,11 @@ class Mision {
     }
 }
 
-
 /*Mision especifica q sobreescribe las funciones de arriba con su comportamiento especifico*/
+
 class MisionPrincesa extends Mision {
     esDificil() {
-        return this.solicitante.charAt(0) === 'G' && (this.detalle === 4 || this.detalle === 5);
+        return super() && (this.detalle === 4 || this.detalle === 5);
     }
 
     puntos() {
@@ -34,7 +34,7 @@ class MisionPrincesa extends Mision {
 /*Mision especifica q sobreescribe las funciones de arriba con su comportamiento especifico*/
 class MisionObjeto extends Mision {
     esDificil() {
-        return this.solicitante.charAt(0) === 'G' && this.detalle > 100;
+        return super() && this.detalle > 100;
     }
 
     puntos() {
@@ -46,7 +46,7 @@ class MisionObjeto extends Mision {
 /*Esta clase es para agregar misiones, se crea una lista con 3 funciones
 la cual pregunta a las clases de misiones especificas por ejemplo q mision es dificil
 o cuantos puntos vale*/
-class Misiones {
+class Shrek {
     constructor() {
         this.misiones = [];
     }
@@ -64,32 +64,19 @@ class Misiones {
     }
 }
 
+
 /*De añguna forma esta clase representa al personaje que representa al personaje principal*/
 
-class Shrek {
-    constructor() {
-        this.misiones = new Misiones();
-    }
 
-    agregarMision(mision) {
-        this.misiones.agregarMision(mision);
-    }
-
-    misionesDificiles() {
-        return this.misiones.misionesDificiles();
-    }
-
-    totalPuntosRecompensa() {
-        return this.misiones.totalPuntosRecompensa();
-    }
-}
 
 /*Se crea una instancia de shrek a la cual se le agregan misiones con los datos especificos de cada campo*/
 
+
 const shrek = new Shrek();
-shrek.agregarMision(new MisionPrincesa('princesa', 'Lord Farquaad', 4));
+shrek.agregarMision(new MisionPrincesa('princesa', 'Gord Farquaad', 4));
 shrek.agregarMision(new MisionObjeto('objeto', 'Gandalf', 40));
 
 /*Se printea todo*/
+
 console.log('Misiones Dificiles:', shrek.misionesDificiles());
 console.log('Total de puntos de recompensa:', shrek.totalPuntosRecompensa());
