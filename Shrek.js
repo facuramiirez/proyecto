@@ -22,7 +22,7 @@ class Mision {
 
 class MisionPrincesa extends Mision {
     esDificil() {
-        return super() && (this.detalle === 4 || this.detalle === 5);
+        return super.esDificil() && (this.detalle === 4 || this.detalle === 5);
     }
 
     puntos() {
@@ -34,7 +34,7 @@ class MisionPrincesa extends Mision {
 /*Mision especifica q sobreescribe las funciones de arriba con su comportamiento especifico*/
 class MisionObjeto extends Mision {
     esDificil() {
-        return super() && this.detalle > 100;
+        return super.esDificil() && this.detalle > 100;
     }
 
     puntos() {
